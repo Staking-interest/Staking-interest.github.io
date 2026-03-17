@@ -4,30 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-  <!-- SEO / EEAT Meta Tags -->
   <title>Staking Interest — How It Works, Rates, Compounding, Calculator &amp; Maximizing Returns (2026)</title>
-  <meta name="description" content="Staking interest guide (2026): how staking interest is calculated, APY vs APR explained, compounding mechanics, real yield drivers, interest rate benchmarks, risk-adjusted returns, best practices, and a complete FAQ. Covers liquid staking, validator economics, and tax considerations.">
+  <meta name="description" content="Staking interest guide (2026): how staking interest is calculated, APY vs APR explained, compounding mechanics, real yield drivers, interest rate benchmarks, risk-adjusted returns, best practices, and a complete FAQ.">
   <meta name="author" content="Crypto Finance Experts">
   <link rel="canonical" href="https://lido-staking-interest.example.com/">
- 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="lido.staking.logo.png">
  
-  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://lido-staking-interest.example.com/">
   <meta property="og:title" content="Staking Interest — How It Works, Rates, Compounding &amp; Maximizing Returns (2026)">
-  <meta property="og:description" content="Complete staking interest guide: how interest accrues, APY vs APR, compounding, rate benchmarks, risk factors, and tax basics.">
-  <meta property="og:image" content="cover.png">
- 
-  <!-- Twitter Card -->
+  <meta property="og:description" content="Complete staking interest guide: APY vs APR, compounding, rate benchmarks, risk factors, and tax basics.">
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://lido-staking-interest.example.com/">
   <meta property="twitter:title" content="Staking Interest — Rates, Compounding &amp; Maximizing Returns (2026)">
-  <meta property="twitter:description" content="How staking interest works, what drives rates, compounding strategies, and risk-adjusted yield — practical guide for 2026.">
-  <meta property="twitter:image" content="cover.png">
+  <meta property="twitter:description" content="How staking interest works, what drives rates, compounding strategies, and risk-adjusted yield.">
  
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,785 +33,460 @@
  
   <style>
     :root {
-      /* Emerald-Green / Dark Teal Theme — unique vs Polygon purple */
-      --primary: #10B981;        /* emerald-500 */
-      --primary-600: #059669;    /* emerald-600 */
-      --primary-700: #047857;    /* emerald-700 */
-      --accent: #F59E0B;         /* amber — warm contrast accent */
- 
-      --ink: #F0FDF4;            /* near-white with green tint */
-      --muted: #A7F3D0;          /* emerald-200 */
-      --muted-2: #6EE7B7;        /* emerald-300 */
- 
-      --bg: #030D09;             /* ultra-dark green-black */
-      --panel: #060F0B;
-      --panel-2: #091410;
-      --line: rgba(16, 185, 129, .14);
- 
-      --ok: #34D399;
+      --g:    #10B981;
+      --gd:   #059669;
+      --ink:  #F0FDF4;
+      --sub:  #9CA3AF;
+      --lt:   #C6F6E0;
+      --line: rgba(255,255,255,.07);
+      --lg:   rgba(16,185,129,.15);
+      --bg:   #060E0A;
+      --card: rgba(255,255,255,.025);
+      --ok:   #34D399;
       --warn: #F59E0B;
-      --error: #F87171;
- 
-      --shadow: 0 18px 48px rgba(0, 0, 0, .60);
-      --shadow-green: 0 14px 38px rgba(16, 185, 129, .20);
-      --radius: 14px;
-      --radius-sm: 10px;
-      --radius-lg: 22px;
-      --gap: 1.25rem;
-      --gap-lg: 2rem;
+      --err:  #F87171;
+      --r:    10px;
     }
- 
     *, *::before, *::after { box-sizing: border-box }
     html, body { height: 100% }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color: var(--muted);
-      background:
-        radial-gradient(900px 600px at 10% 0%,   rgba(16,185,129,.18), transparent 60%),
-        radial-gradient(900px 600px at 88% 8%,   rgba(245,158,11,.08), transparent 60%),
-        radial-gradient(900px 600px at 50% 88%,  rgba(4,120,87,.14),   transparent 60%),
-        linear-gradient(180deg, #020B06 0%, #030D09 45%, #020B06 100%);
-      line-height: 1.65;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-size: 1rem;
+      line-height: 1.72;
+      color: var(--sub);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
- 
-    a { color: var(--primary); text-decoration: none }
+    a { color: var(--g); text-decoration: none }
     a:hover { text-decoration: underline }
- 
     img { max-width: 100%; height: auto; display: block }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 1.5rem }
  
-    h1, h2, h3, h4 { color: var(--ink); line-height: 1.25; margin: 0 0 .6rem }
-    h1 {
-      font-size: clamp(2rem, 4.5vw, 3.1rem);
-      font-weight: 950;
-      letter-spacing: .2px;
-      background: linear-gradient(135deg, #F0FDF4 0%, #6EE7B7 50%, #10B981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    h2 {
-      font-size: clamp(1.35rem, 2.8vw, 2rem);
-      margin-top: 2.2rem;
-      padding-top: .6rem;
-      border-top: 1px solid var(--line);
-    }
-    h3 { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: #A7F3D0 }
+    h1,h2,h3,h4 { color: var(--ink); line-height: 1.25; margin: 0 0 .5rem; font-weight: 700 }
+    h1 { font-size: clamp(1.8rem,4vw,2.7rem); font-weight: 800; letter-spacing: -.3px }
+    h2 { font-size: clamp(1.15rem,2.5vw,1.65rem); margin-top:2.5rem; padding-top:.7rem; border-top:1px solid var(--line) }
+    h3 { font-size: 1rem; color: var(--lt) }
+    p,li,td,th { font-size: .96rem }
+    .lead { font-size: 1.07rem; color: var(--lt); line-height: 1.78 }
  
-    p, li, td, th { font-size: 1rem }
-    .lead { font-size: 1.125rem; color: #D1FAE5 }
-    .muted { color: var(--muted) }
-    .muted-2 { color: var(--muted-2) }
- 
-    /* ── HERO ── */
+    /* HERO */
     header.hero {
-      padding: clamp(2rem, 6vw, 4rem) 0;
-      background:
-        radial-gradient(700px 420px at 15% 10%, rgba(16,185,129,.22), transparent 60%),
-        radial-gradient(700px 420px at 92% 20%, rgba(245,158,11,.10), transparent 60%),
-        linear-gradient(180deg, rgba(16,185,129,.05), rgba(255,255,255,0) 55%);
+      padding: clamp(2.5rem,8vw,5rem) 0 clamp(2rem,5vw,3.5rem);
       border-bottom: 1px solid var(--line);
     }
- 
-    .hero-grid {
-      display: grid;
-      gap: var(--gap-lg);
-      grid-template-columns: 1fr;
-      align-items: stretch;
-    }
- 
-    .hero-card {
-      background: linear-gradient(160deg, rgba(6,15,11,.90), rgba(3,13,9,.75));
-      border: 1px solid rgba(16,185,129,.20);
-      border-radius: var(--radius-lg);
-      padding: clamp(1.25rem, 3vw, 2rem);
-      box-shadow: var(--shadow), 0 0 0 1px rgba(16,185,129,.06) inset;
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      opacity: .6;
-    }
- 
-    .brand-row { display: flex; align-items: center; gap: .9rem; margin-bottom: .75rem }
+    .brand-row { display:flex; align-items:center; gap:.7rem; margin-bottom:1.4rem }
     .brand-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      border: 1px solid rgba(16,185,129,.25);
-      background: rgba(16,185,129,.08);
-      padding: .4rem;
-      object-fit: contain;
-      box-shadow: 0 8px 20px rgba(0,0,0,.35), 0 0 0 1px rgba(16,185,129,.10) inset;
-      flex: 0 0 auto;
+      width:42px; height:42px; border-radius:9px;
+      border:1px solid var(--lg); background:rgba(16,185,129,.06);
+      padding:.3rem; object-fit:contain;
     }
+    .brand-lbl { font-size:.82rem; color:var(--sub); font-weight:600; letter-spacing:.4px; text-transform:uppercase }
  
-    /* ── LARGE CTA BUTTON ── */
+    /* SINGLE CTA */
+    .cta-wrap { display:flex; justify-content:center; margin:2rem 0 0 }
     .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      margin-top: 1rem;
-      background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 14px;
-      font-weight: 900;
-      font-size: 1.08rem;
-      letter-spacing: .3px;
-      box-shadow: 0 16px 42px rgba(16,185,129,.38), 0 2px 8px rgba(0,0,0,.3);
-      border: 1px solid rgba(255,255,255,.15);
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-      text-shadow: 0 1px 2px rgba(0,0,0,.3);
-      position: relative;
-      overflow: hidden;
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:var(--g); color:#fff;
+      font-weight:700; font-size:1rem;
+      padding:.85rem 2.25rem; border-radius:8px;
+      letter-spacing:.1px;
+      transition:background .18s, transform .18s;
     }
-    .cta::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), transparent 50%);
-      pointer-events: none;
-    }
-    .cta:hover {
-      filter: brightness(1.08);
-      transform: translateY(-2px);
-      box-shadow: 0 22px 52px rgba(16,185,129,.50), 0 4px 12px rgba(0,0,0,.35);
-      text-decoration: none;
-    }
-    .cta:active { transform: translateY(0) }
+    .cta:hover { background:var(--gd); transform:translateY(-1px); text-decoration:none }
  
-    .cta-arrow { font-size: 1.2rem; font-weight: 900 }
- 
-    .cta.secondary {
-      background: transparent;
-      border: 1px solid rgba(16,185,129,.25);
-      color: var(--ink);
-      margin-left: .75rem;
-      box-shadow: none;
-      font-size: 1rem;
-      padding: .85rem 1.5rem;
-    }
-    .cta.secondary::after { display: none }
-    .cta.secondary:hover { background: rgba(16,185,129,.08); transform: translateY(-2px) }
- 
-    .cta-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: .75rem;
-      margin-top: 1.25rem;
-    }
-    .cta-center .cta { margin-top: 0 }
- 
+    /* NOTE */
     .note {
-      border-left: 3px solid var(--primary);
-      padding: .75rem 1rem;
-      background: rgba(16,185,129,.09);
-      border-radius: 10px;
-      color: #D1FAE5;
+      border-left:2px solid var(--g);
+      padding:.65rem 1rem;
+      background:rgba(16,185,129,.055);
+      border-radius:0 8px 8px 0;
+      color:var(--lt);
+      margin:1rem 0;
     }
  
-    /* ── STEPS ── */
-    section.step-guide { padding: clamp(2rem, 6vw, 3.5rem) 0 }
-    .steps { display: grid; gap: var(--gap); grid-template-columns: 1fr }
-    .step {
-      background: linear-gradient(160deg, rgba(6,15,11,.82), rgba(3,13,9,.68));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.2rem;
-      box-shadow: 0 12px 26px rgba(0,0,0,.45);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .step::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: linear-gradient(180deg, var(--primary), transparent);
-      opacity: .5;
-    }
-    .step:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 36px rgba(0,0,0,.55);
-      border-color: rgba(16,185,129,.28);
-    }
-    .step .icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      display: inline-grid; place-items: center;
-      background: rgba(16,185,129,.15);
-      margin-bottom: .6rem;
-      color: #A7F3D0;
-      font-weight: 950;
-      font-size: 1.2rem;
-      border: 1px solid rgba(16,185,129,.20);
-    }
- 
-    /* ── CARDS ── */
-    main .card {
-      background: linear-gradient(160deg, rgba(6,15,11,.72), rgba(3,13,9,.60));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      margin: 1.25rem 0;
-      box-shadow: 0 12px 26px rgba(0,0,0,.45);
-    }
- 
-    .grid-2 { display: grid; gap: var(--gap); grid-template-columns: 1fr }
- 
-    .pillbar { display: flex; flex-wrap: wrap; gap: .6rem; margin: .75rem 0 0 }
-    .pill {
-      border: 1px solid rgba(16,185,129,.20);
-      background: rgba(16,185,129,.07);
-      padding: .4rem .65rem;
-      border-radius: 999px;
-      font-weight: 800;
-      color: #D1FAE5;
-    }
- 
+    /* TOC */
     .toc {
-      border: 1px solid rgba(16,185,129,.18);
-      background: linear-gradient(160deg, rgba(16,185,129,.08), rgba(3,13,9,.02));
-      border-radius: var(--radius);
-      padding: 1rem;
+      border:1px solid var(--line); background:var(--card);
+      border-radius:var(--r); padding:1rem 1.1rem; margin-top:1.75rem;
     }
-    .toc strong { color: #F0FDF4 }
-    .toc ul { margin: .5rem 0 0; padding-left: 1.1rem }
-    .toc li { margin: .25rem 0 }
-    .toc a { font-weight: 800 }
+    .toc strong { color:var(--ink); font-size:.82rem; letter-spacing:.3px; text-transform:uppercase }
+    .toc ul { margin:.5rem 0 0; padding-left:1.1rem; columns:2; gap:1.5rem }
+    .toc li { margin:.2rem 0; font-size:.88rem }
+    @media(max-width:580px){ .toc ul { columns:1 } }
  
-    /* ── TABLES ── */
-    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px }
-    th, td { padding: .9rem; border-bottom: 1px solid var(--line) }
-    th {
-      background: rgba(16,185,129,.10);
-      color: #F0FDF4;
-      text-align: left;
+    /* STEPS */
+    .step-guide { padding:2.5rem 0 }
+    .steps { display:grid; gap:.9rem; grid-template-columns:1fr }
+    @media(min-width:680px){ .steps { grid-template-columns:repeat(4,1fr) } }
+    .step {
+      border:1px solid var(--line); border-radius:var(--r);
+      padding:1rem; background:var(--card);
+      transition:border-color .2s;
     }
-    tr.highlight { background: rgba(16,185,129,.07) }
-    tr:hover { background: rgba(255,255,255,.025) }
- 
-    .ok  { color: var(--ok) }
-    .warn { color: var(--warn) }
-    .err { color: var(--error) }
- 
-    /* ── EEAT / SOURCES ── */
-    .eeat {
-      background: linear-gradient(160deg, rgba(16,185,129,.09), rgba(3,13,9,.02));
-      border: 1px solid rgba(16,185,129,.18);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: 0 12px 26px rgba(0,0,0,.45);
+    .step:hover { border-color:var(--lg) }
+    .step-n {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:28px; height:28px; border-radius:50%;
+      border:1px solid var(--lg); color:var(--g);
+      font-weight:800; font-size:.82rem; margin-bottom:.5rem;
     }
+    .step h3 { font-size:.92rem; color:var(--ink); margin-bottom:.3rem }
+    .step p  { font-size:.86rem; margin:0 }
  
-    /* ── FAQ ── */
-    .faq-section { margin-top: 1.25rem }
-    .faq-item { border-bottom: 1px solid var(--line); padding: .9rem 0 }
-    .faq-button {
-      all: unset; display: flex; justify-content: space-between; align-items: center;
-      width: 100%; cursor: pointer; padding: .3rem 0;
-    }
-    .faq-button:focus-visible { outline: 2px solid var(--primary) }
-    .faq-button h3 { margin: 0; font-weight: 950 }
-    .faq-content { max-height: 0; overflow: hidden; transition: max-height .25s ease }
-    .faq-content.open { padding-top: .6rem }
-    .faq-plus { font-weight: 950; color: var(--primary); font-size: 1.3rem }
- 
-    /* ── BADGE ROW ── */
-    .badge-row { display: flex; flex-wrap: wrap; gap: .6rem; margin: .9rem 0 0 }
-    .badge {
-      border: 1px solid rgba(245,158,11,.20);
-      background: rgba(245,158,11,.06);
-      padding: .35rem .6rem;
-      border-radius: 999px;
-      font-weight: 900;
-      color: #FDE68A;
+    /* CARD */
+    main .card {
+      border:1px solid var(--line); border-radius:var(--r);
+      padding:1.2rem; margin:1.2rem 0; background:var(--card);
     }
  
-    /* ── CALLOUT GRID ── */
-    .callout-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; margin-top: .75rem }
+    /* INLINE SOURCE CHIP */
+    .src {
+      display:inline-flex; align-items:center; gap:.25rem;
+      font-size:.76rem; font-weight:600;
+      color:var(--g); border:1px solid var(--lg);
+      background:rgba(16,185,129,.05); border-radius:4px;
+      padding:.08rem .38rem; vertical-align:middle;
+      white-space:nowrap; text-decoration:none;
+    }
+    .src:hover { background:rgba(16,185,129,.12); text-decoration:none }
+    .src::before { content:'↗'; font-size:.68rem; opacity:.65 }
+ 
+    /* TABLES */
+    table { width:100%; border-collapse:collapse; border-radius:var(--r); overflow:hidden; margin:.7rem 0 }
+    th,td { padding:.7rem .85rem; border-bottom:1px solid var(--line); font-size:.88rem }
+    th { background:rgba(16,185,129,.07); color:var(--ink); text-align:left; font-weight:600 }
+    tr.hl { background:rgba(16,185,129,.04) }
+    tr:last-child td { border-bottom:none }
+    tr:hover td { background:rgba(255,255,255,.02) }
+    .ok   { color:var(--ok) }
+    .warn { color:var(--warn) }
+    .err  { color:var(--err) }
+ 
+    /* RATE BARS */
+    .rbars { display:grid; gap:.5rem; margin:1rem 0 }
+    .rbr { display:flex; align-items:center; gap:.7rem }
+    .rbl { min-width:88px; font-size:.84rem; font-weight:600; color:var(--lt) }
+    .rbt { flex:1; height:4px; background:rgba(255,255,255,.06); border-radius:99px; overflow:hidden }
+    .rbf { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--g),#34D399) }
+    .rbv { min-width:46px; text-align:right; font-size:.84rem; font-weight:700; color:var(--g) }
+ 
+    /* GRID 2 */
+    .g2 { display:grid; gap:.9rem; grid-template-columns:1fr }
+    @media(min-width:580px){ .g2 { grid-template-columns:1fr 1fr } }
     .mini {
-      background: rgba(16,185,129,.04);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1rem;
+      background:rgba(16,185,129,.03); border:1px solid var(--line);
+      border-radius:var(--r); padding:.9rem;
     }
-    .mini h3 { margin-bottom: .35rem }
+    .mini h3 { font-size:.92rem; margin-bottom:.25rem }
  
-    /* ── KPI ── */
-    .kpi-badges { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .5rem }
-    .kpi-badges span {
-      border: 1px solid rgba(16,185,129,.22);
-      background: rgba(16,185,129,.07);
-      color: #A7F3D0;
-      padding: .3rem .55rem;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: .9rem;
+    /* INLINE TAGS */
+    .tags { display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0 }
+    .tag {
+      font-size:.76rem; font-weight:600; color:var(--lt);
+      border:1px solid var(--line); background:rgba(255,255,255,.03);
+      padding:.18rem .5rem; border-radius:4px;
     }
  
-    /* ── RATE METER (decorative visual) ── */
-    .rate-bars { display: grid; gap: .6rem; margin-top: 1rem }
-    .rate-bar-row { display: flex; align-items: center; gap: .75rem }
-    .rate-bar-label { min-width: 100px; font-weight: 800; color: #D1FAE5; font-size: .9rem }
-    .rate-bar-track {
-      flex: 1; height: 8px; background: rgba(255,255,255,.06);
-      border-radius: 999px; overflow: hidden;
+    /* KPI CHIPS */
+    .kpis { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.45rem }
+    .kpis span {
+      font-size:.76rem; font-weight:700; color:var(--g);
+      border:1px solid var(--lg); background:rgba(16,185,129,.05);
+      padding:.18rem .45rem; border-radius:4px;
     }
-    .rate-bar-fill {
-      height: 100%; border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-    .rate-bar-val { min-width: 52px; text-align: right; font-weight: 900; color: var(--primary); font-size: .9rem }
  
-    /* ── RESPONSIVE ── */
-    @media (min-width: 860px) {
-      .hero-grid     { grid-template-columns: 1fr }
-      .steps         { grid-template-columns: repeat(4, 1fr) }
-      .grid-2        { grid-template-columns: 1fr 1fr }
-      .callout-grid  { grid-template-columns: 1fr 1fr }
+    /* EEAT */
+    .eeat { border:1px solid var(--line); background:var(--card); border-radius:var(--r); padding:1.2rem; margin:1.2rem 0 }
+ 
+    /* FAQ */
+    .faq-item { border-bottom:1px solid var(--line); padding:.75rem 0 }
+    .faq-item:last-child { border-bottom:none }
+    .faq-btn {
+      all:unset; display:flex; justify-content:space-between; align-items:center;
+      width:100%; cursor:pointer; gap:1rem;
     }
+    .faq-btn:focus-visible { outline:2px solid var(--g); border-radius:4px }
+    .faq-btn h3 { margin:0; font-size:.95rem; font-weight:700; color:var(--ink) }
+    .faq-body { max-height:0; overflow:hidden; transition:max-height .25s ease }
+    .faq-body.open { padding-top:.45rem }
+    .faq-ico { color:var(--g); font-size:1.1rem; font-weight:700; flex-shrink:0 }
+ 
+    footer { padding:2rem 0; border-top:1px solid var(--line); margin-top:3rem }
+    footer p { font-size:.84rem; color:var(--sub); margin:0 }
   </style>
 </head>
- 
 <body>
  
+<!-- HERO -->
 <header class="hero" role="banner">
-  <div class="container hero-grid">
-    <div class="hero-card" aria-label="Intro">
- 
-      <div class="brand-row">
-        <img class="brand-logo" src="lido.staking.logo.png" alt="Lido Staking logo">
-        <div>
-          <div class="muted" style="font-weight:900; letter-spacing:.2px;">Operational Guide</div>
-          <div class="muted-2" style="font-size:.95rem;">Interest Rates • APY/APR • Compounding • Real Yield • Risk</div>
-        </div>
-      </div>
- 
-      <h1>Staking Interest</h1>
-      <p class="lead">
-        A practical, numbers-first guide to <strong>staking interest</strong>: how interest accrues, what actually drives your rate,
-        the difference between <strong>APY and APR</strong>, how compounding works in practice, yield benchmarks across
-        major protocols, and every risk factor that quietly eats into your real return.
-      </p>
- 
-      <div class="pillbar" aria-label="Key topics">
-        <span class="pill">Interest Mechanics</span>
-        <span class="pill">APY vs APR</span>
-        <span class="pill">Compounding</span>
-        <span class="pill">Real Yield</span>
-        <span class="pill">Risk-Adjusted Returns</span>
-        <span class="pill">Tax Basics</span>
-      </div>
- 
-      <!-- Large attractive CTA -->
-      <div class="cta-center">
-        <a href="https://lido.fi/" class="cta" aria-label="Start earning staking interest on Lido" target="_blank" rel="noopener">
-          <span>Start Earning with Lido</span>
-          <span class="cta-arrow">→</span>
-        </a>
-        <a href="#how-interest-works" class="cta secondary">Learn the Mechanics</a>
-      </div>
- 
-      <div class="note" style="margin-top:1rem;">
-        <strong>Core principle:</strong> Staking interest is not a bank deposit. Your real yield = gross rate − validator commission − tx fees −
-        "lost time" during unbonding. Always evaluate <em>net</em> outcomes.
-      </div>
- 
-      <!-- Table of Contents -->
-      <div class="toc" style="margin-top:1.25rem;" aria-label="Table of contents">
-        <strong>Contents</strong>
-        <ul>
-          <li><a href="#how-interest-works">How Staking Interest Works</a></li>
-          <li><a href="#apy-apr">APY vs APR: Which Number to Trust</a></li>
-          <li><a href="#interest-rates">Staking Interest Rate Benchmarks</a></li>
-          <li><a href="#compounding">Compounding: Real Impact on Returns</a></li>
-          <li><a href="#calculator">Staking Interest Calculator Framework</a></li>
-          <li><a href="#liquid-staking">Liquid Staking Interest</a></li>
-          <li><a href="#risk-adjusted">Risk-Adjusted Yield</a></li>
-          <li><a href="#tax">Tax Treatment of Staking Interest</a></li>
-          <li><a href="#best-practices">Best Practices</a></li>
-          <li><a href="#troubleshooting">Troubleshooting</a></li>
-          <li><a href="#eeat">Authoritative References</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
+  <div class="wrap">
+    <div class="brand-row">
+      <img class="brand-logo" src="lido.staking.logo.png" alt="Lido Staking">
+      <span class="brand-lbl">Operational Guide · 2026</span>
     </div>
+ 
+    <h1>Staking Interest</h1>
+ 
+    <p class="lead">
+      A practical, numbers-first guide to staking interest: how it accrues, what drives your rate,
+      the real difference between APY and APR, how compounding works in practice, and every factor
+      that quietly reduces your net return.
+    </p>
+ 
+    <div class="note">
+      <strong>Core principle:</strong> Real yield = gross rate − validator commission − transaction fees − lost time during unbonding.
+      Always evaluate <em>net</em> outcomes, not headline numbers.
+    </div>
+ 
+    <div class="cta-wrap">
+      <a href="https://lido.fi/" class="cta" target="_blank" rel="noopener" aria-label="Start earning staking interest on Lido">
+        Start Earning with Lido &nbsp;→
+      </a>
+    </div>
+ 
+    <nav class="toc" aria-label="Table of contents">
+      <strong>Contents</strong>
+      <ul>
+        <li><a href="#how-works">How Staking Interest Works</a></li>
+        <li><a href="#apy-apr">APY vs APR</a></li>
+        <li><a href="#rates">Rate Benchmarks</a></li>
+        <li><a href="#compounding">Compounding</a></li>
+        <li><a href="#calculator">Calculator Framework</a></li>
+        <li><a href="#liquid">Liquid Staking Interest</a></li>
+        <li><a href="#risk">Risk-Adjusted Yield</a></li>
+        <li><a href="#tax">Tax Treatment</a></li>
+        <li><a href="#best-practices">Best Practices</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#eeat">References</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
  
-<!-- HOW IT WORKS STEPS -->
-<section class="step-guide" aria-labelledby="how-interest-works">
-  <div class="container">
-    <h2 id="how-interest-works">How Staking Interest Works: From Protocol to Wallet (4 Stages)</h2>
+<!-- STEPS -->
+<section class="step-guide" aria-labelledby="how-works">
+  <div class="wrap">
+    <h2 id="how-works">How Staking Interest Works: 4 Stages</h2>
     <div class="steps" role="list">
       <article class="step" role="listitem">
-        <div class="icon">①</div>
-        <h3>Protocol generates block rewards</h3>
-        <p>
-          The network issues new tokens and/or distributes a portion of transaction fees to validators
-          in exchange for securing the chain. This is the gross source of staking interest.
-        </p>
+        <div class="step-n">1</div>
+        <h3>Protocol issues block rewards</h3>
+        <p>The network creates new tokens and/or distributes transaction fees to validators. This is the gross source of staking interest.</p>
       </article>
       <article class="step" role="listitem">
-        <div class="icon">②</div>
+        <div class="step-n">2</div>
         <h3>Validator deducts commission</h3>
-        <p>
-          Before passing rewards to delegators, validators take a cut — typically 3–15%.
-          Commission is the most directly controllable drag on your interest rate.
-        </p>
+        <p>Before sharing rewards, validators take a cut — typically 3–15%. Commission is the most directly controllable drag on your rate.</p>
       </article>
       <article class="step" role="listitem">
-        <div class="icon">③</div>
-        <h3>Rewards distributed to stakers</h3>
-        <p>
-          Your share of the validator's reward pool is proportional to your stake.
-          Rewards may accumulate on-chain until you claim them, depending on the protocol.
-        </p>
+        <div class="step-n">3</div>
+        <h3>Rewards reach your stake</h3>
+        <p>Your share of the reward pool is proportional to your stake. Rewards may accumulate on-chain until you claim them.</p>
       </article>
       <article class="step" role="listitem">
-        <div class="icon">④</div>
-        <h3>You claim, compound, or exit</h3>
-        <p>
-          Claiming triggers a transaction fee. Compounding (restaking rewards) increases future interest
-          but costs gas. Exiting requires an unbonding period that pauses your interest accrual.
-        </p>
+        <div class="step-n">4</div>
+        <h3>Claim, compound, or exit</h3>
+        <p>Claiming costs gas. Compounding grows future interest but adds more gas. Exiting triggers an unbonding period that pauses accrual.</p>
       </article>
     </div>
+    <p style="margin-top:1rem; font-size:.88rem;">
+      For a full breakdown of Ethereum staking mechanics see the
+      <a href="https://ethereum.org/en/staking/" target="_blank" rel="noopener nofollow" class="src">Ethereum.org staking guide</a>
+      and live validator stats on
+      <a href="https://beaconcha.in/" target="_blank" rel="noopener nofollow" class="src">Beaconcha.in</a>.
+    </p>
   </div>
 </section>
  
-<main class="container">
+<main class="wrap">
  
   <!-- APY vs APR -->
   <section class="card" id="apy-apr">
-    <h2>Staking Interest APY vs APR: Which Number Should You Trust?</h2>
-    <p>
-      The difference between <strong>APY</strong> (Annual Percentage Yield) and <strong>APR</strong>
-      (Annual Percentage Rate) is compounding — and in staking, compounding is never free.
-    </p>
+    <h2>APY vs APR: Which Number to Trust</h2>
+    <p>The difference between <strong>APY</strong> and <strong>APR</strong> is compounding — and in staking, compounding is never free.</p>
  
-    <table aria-label="APY vs APR comparison">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Definition</th>
-          <th>When it overstates real returns</th>
-        </tr>
-      </thead>
+    <div class="tags">
+      <span class="tag">APY vs APR</span>
+      <span class="tag">Net Yield</span>
+      <span class="tag">Compounding Cost</span>
+    </div>
+ 
+    <table aria-label="APY vs APR">
+      <thead><tr><th>Metric</th><th>Definition</th><th>When it overstates real returns</th></tr></thead>
       <tbody>
-        <tr class="highlight">
-          <td><strong>APR</strong></td>
-          <td>Simple annualised rate, no compounding</td>
-          <td>When you assume compounding happens automatically</td>
-        </tr>
-        <tr>
-          <td><strong>APY</strong></td>
-          <td>Annualised rate assuming frequent compounding</td>
-          <td>When compounding frequency is low or tx fees eat the gain</td>
-        </tr>
-        <tr class="highlight">
-          <td><strong>Net APR</strong></td>
-          <td>APR minus commission and tx costs</td>
-          <td>Rarely overstates — this is the number to target</td>
-        </tr>
-        <tr>
-          <td><strong>Real yield</strong></td>
-          <td>Inflation-adjusted return</td>
-          <td>When token price falls faster than nominal APY</td>
-        </tr>
+        <tr class="hl"><td><strong>APR</strong></td><td>Simple annualised rate, no compounding</td><td>When you assume compounding happens automatically</td></tr>
+        <tr><td><strong>APY</strong></td><td>Annualised rate with compounding baked in</td><td>When compounding frequency is low or fees eat the gain</td></tr>
+        <tr class="hl"><td><strong>Net APR</strong></td><td>APR minus commission and tx costs</td><td>Rarely — this is the number to target</td></tr>
+        <tr><td><strong>Real yield</strong></td><td>Inflation-adjusted return</td><td>When token price falls faster than nominal APY</td></tr>
       </tbody>
     </table>
  
     <div class="note">
-      <strong>Rule:</strong> Always ask for <em>net APR after commission and fees</em>. APY is a marketing metric
-      until you verify the compounding frequency and transaction cost assumptions.
+      <strong>Rule:</strong> Always ask for net APR after commission and fees. APY is a marketing figure until you verify the compounding frequency and transaction cost assumptions.
     </div>
   </section>
  
-  <!-- INTEREST RATES -->
-  <section class="card" id="interest-rates">
+  <!-- RATES -->
+  <section class="card" id="rates">
     <h2>Staking Interest Rate Benchmarks (2025–2026)</h2>
     <p>
-      Staking interest rates vary significantly by asset, protocol design, and network inflation schedule.
-      Below is a representative landscape — <em>always verify from official dashboards before staking.</em>
+      Rates vary significantly by asset, protocol design, and inflation schedule.
+      Figures below are representative ranges from
+      <a href="https://www.stakingrewards.com/" target="_blank" rel="noopener nofollow" class="src">StakingRewards.com</a>
+      — always verify from official dashboards before staking.
     </p>
  
-    <!-- Visual rate bars -->
-    <div class="rate-bars" aria-label="Rate benchmarks">
-      <div class="rate-bar-row">
-        <span class="rate-bar-label">ETH (Lido)</span>
-        <div class="rate-bar-track"><div class="rate-bar-fill" style="width:35%"></div></div>
-        <span class="rate-bar-val">~3–4%</span>
-      </div>
-      <div class="rate-bar-row">
-        <span class="rate-bar-label">SOL</span>
-        <div class="rate-bar-track"><div class="rate-bar-fill" style="width:50%"></div></div>
-        <span class="rate-bar-val">~6–7%</span>
-      </div>
-      <div class="rate-bar-row">
-        <span class="rate-bar-label">MATIC/POL</span>
-        <div class="rate-bar-track"><div class="rate-bar-fill" style="width:55%"></div></div>
-        <span class="rate-bar-val">~5–8%</span>
-      </div>
-      <div class="rate-bar-row">
-        <span class="rate-bar-label">DOT</span>
-        <div class="rate-bar-track"><div class="rate-bar-fill" style="width:65%"></div></div>
-        <span class="rate-bar-val">~12–15%</span>
-      </div>
-      <div class="rate-bar-row">
-        <span class="rate-bar-label">ATOM</span>
-        <div class="rate-bar-track"><div class="rate-bar-fill" style="width:60%"></div></div>
-        <span class="rate-bar-val">~10–14%</span>
-      </div>
+    <div class="rbars" aria-label="Rate benchmarks">
+      <div class="rbr"><span class="rbl">ETH (Lido)</span><div class="rbt"><div class="rbf" style="width:31%"></div></div><span class="rbv">~3–4%</span></div>
+      <div class="rbr"><span class="rbl">SOL</span><div class="rbt"><div class="rbf" style="width:47%"></div></div><span class="rbv">~6–7%</span></div>
+      <div class="rbr"><span class="rbl">MATIC/POL</span><div class="rbt"><div class="rbf" style="width:53%"></div></div><span class="rbv">~5–8%</span></div>
+      <div class="rbr"><span class="rbl">DOT</span><div class="rbt"><div class="rbf" style="width:68%"></div></div><span class="rbv">~12–15%</span></div>
+      <div class="rbr"><span class="rbl">ATOM</span><div class="rbt"><div class="rbf" style="width:62%"></div></div><span class="rbv">~10–14%</span></div>
     </div>
  
-    <p class="muted" style="font-size:.9rem; margin-top:.8rem;">
-      ⚠ Rates above are illustrative ranges, not guarantees. Actual rates change with network conditions, total staked,
-      and validator commission. Source: protocol dashboards and StakingRewards.com.
-    </p>
+    <div class="tags" style="margin-top:1rem">
+      <span class="tag">Interest Mechanics</span>
+      <span class="tag">Real Yield</span>
+      <span class="tag">Validator Economics</span>
+    </div>
  
-    <h3>What drives your rate?</h3>
+    <h3 style="margin-top:1rem">What drives your rate?</h3>
     <ul>
-      <li><strong>Network inflation schedule</strong> — the protocol's issuance rules set the ceiling.</li>
-      <li><strong>Total staked ratio</strong> — the more tokens staked, the lower the per-token rate (rewards diluted).</li>
+      <li><strong>Network inflation schedule</strong> — protocol issuance rules set the ceiling.</li>
+      <li><strong>Total staked ratio</strong> — more tokens staked = lower per-token rate.</li>
       <li><strong>Validator commission</strong> — directly subtracted from your share.</li>
-      <li><strong>Transaction fee revenue</strong> — some networks add fee income on top of issuance rewards.</li>
-      <li><strong>Slashing events</strong> — rare but can reduce principal and rewards for affected delegators.</li>
+      <li><strong>Transaction fee revenue</strong> — some networks add fee income on top of issuance.</li>
+      <li><strong>Slashing events</strong> — rare but can reduce principal for affected delegators.</li>
     </ul>
- 
-    <div class="badge-row" aria-label="Key rate drivers">
-      <span class="badge">Inflation Schedule</span>
-      <span class="badge">Staked Ratio</span>
-      <span class="badge">Validator Commission</span>
-      <span class="badge">Fee Revenue</span>
-      <span class="badge">Slashing Risk</span>
-    </div>
   </section>
  
   <!-- COMPOUNDING -->
   <section class="card" id="compounding">
-    <h2>Staking Interest Compounding: Real Impact on Your Returns</h2>
+    <h2>Compounding: Real Impact on Returns</h2>
     <p>
-      Compounding means restaking your earned rewards so future interest accrues on a larger base.
-      In staking, compounding is <em>not automatic</em> — you typically pay a gas fee each time.
+      Compounding means restaking earned rewards so future interest accrues on a larger base.
+      In native staking this is not automatic — you pay gas each time.
+      Liquid staking tokens like stETH handle this automatically.
+      <a href="https://docs.lido.fi/" target="_blank" rel="noopener nofollow" class="src">Lido docs</a>
     </p>
  
-    <table aria-label="Compounding frequency impact">
-      <thead>
-        <tr>
-          <th>Compounding frequency</th>
-          <th>Net effect (small balance)</th>
-          <th>Net effect (large balance)</th>
-        </tr>
-      </thead>
+    <div class="tags">
+      <span class="tag">Compounding</span>
+      <span class="tag">Gas Costs</span>
+      <span class="tag">Liquid Staking</span>
+    </div>
+ 
+    <table aria-label="Compounding frequency">
+      <thead><tr><th>Frequency</th><th>Small balance (&lt;$5k)</th><th>Large balance (&gt;$20k)</th></tr></thead>
       <tbody>
-        <tr class="highlight">
-          <td>Daily</td>
-          <td class="err">Negative after fees for &lt;$5k</td>
-          <td class="ok">Meaningful gain if fees are low</td>
-        </tr>
-        <tr>
-          <td>Weekly</td>
-          <td class="warn">Marginal, fee-dependent</td>
-          <td class="ok">Positive, moderate boost</td>
-        </tr>
-        <tr class="highlight">
-          <td>Monthly</td>
-          <td class="ok">Usually positive above ~$2k</td>
-          <td class="ok">Consistent boost</td>
-        </tr>
-        <tr>
-          <td>Never (set &amp; forget)</td>
-          <td class="ok">Best net outcome for tiny balances</td>
-          <td class="warn">Missed compounding opportunity</td>
-        </tr>
+        <tr class="hl"><td>Daily</td><td class="err">Negative after fees</td><td class="ok">Meaningful gain if fees are low</td></tr>
+        <tr><td>Weekly</td><td class="warn">Marginal, fee-dependent</td><td class="ok">Consistent positive boost</td></tr>
+        <tr class="hl"><td>Monthly</td><td class="ok">Usually positive above ~$2k</td><td class="ok">Reliable boost</td></tr>
+        <tr><td>Never (set &amp; forget)</td><td class="ok">Best net for tiny balances</td><td class="warn">Missed compounding opportunity</td></tr>
       </tbody>
     </table>
  
     <div class="note">
-      <strong>Key insight:</strong> Liquid staking tokens (e.g. stETH, stSOL) compound <em>automatically</em> by
-      rebasing or accruing value — eliminating the gas-per-compound cost for most users.
+      <strong>Key insight:</strong> Liquid staking tokens compound automatically by rebasing or accruing value — eliminating the gas-per-compound cost entirely.
     </div>
   </section>
  
   <!-- CALCULATOR -->
   <section class="card" id="calculator">
-    <h2>Staking Interest Calculator: A Net-Yield Estimation Framework</h2>
-    <p>
-      A <strong>staking interest calculator</strong> should compute your <em>net</em> outcome — not just
-      a marketing APY. Use these inputs to build your own estimate:
-    </p>
+    <h2>Staking Interest Calculator: A Net-Yield Framework</h2>
+    <p>A staking interest calculator should estimate your <em>net</em> outcome, not just a marketing APY. Use these inputs:</p>
  
     <table aria-label="Calculator inputs">
-      <thead>
-        <tr>
-          <th>Input</th>
-          <th>What it represents</th>
-          <th>Why it matters</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Input</th><th>What it represents</th><th>Why it matters</th></tr></thead>
       <tbody>
-        <tr class="highlight">
-          <td>Principal amount</td>
-          <td>Your starting stake</td>
-          <td>Determines if compounding fees are cost-effective</td>
-        </tr>
-        <tr>
-          <td>Gross APR</td>
-          <td>Protocol rate before commission</td>
-          <td>The ceiling of your return</td>
-        </tr>
-        <tr class="highlight">
-          <td>Validator commission %</td>
-          <td>Operator's cut of rewards</td>
-          <td>Directly reduces net interest</td>
-        </tr>
-        <tr>
-          <td>Compounding frequency</td>
-          <td>How often you restake rewards</td>
-          <td>Increases APY but incurs gas costs</td>
-        </tr>
-        <tr class="highlight">
-          <td>Gas cost per compound</td>
-          <td>Transaction fee in USD</td>
-          <td>Can dominate returns on small balances</td>
-        </tr>
-        <tr>
-          <td>Holding period (days)</td>
-          <td>How long you plan to stake</td>
-          <td>Affects break-even on setup / exit fees</td>
-        </tr>
-        <tr class="highlight">
-          <td>Unbonding days (lost time)</td>
-          <td>Days with no yield during exit</td>
-          <td>Reduces effective annual return</td>
-        </tr>
+        <tr class="hl"><td>Principal amount</td><td>Your starting stake</td><td>Determines if compounding fees are cost-effective</td></tr>
+        <tr><td>Gross APR</td><td>Protocol rate before commission</td><td>The ceiling of your return</td></tr>
+        <tr class="hl"><td>Validator commission %</td><td>Operator's cut</td><td>Directly reduces net interest</td></tr>
+        <tr><td>Compounding frequency</td><td>How often you restake</td><td>Increases APY but incurs gas</td></tr>
+        <tr class="hl"><td>Gas cost per compound</td><td>Transaction fee in USD</td><td>Can dominate returns on small balances</td></tr>
+        <tr><td>Unbonding days</td><td>Days with no yield on exit</td><td>Reduces effective annual return</td></tr>
       </tbody>
     </table>
  
-    <h3>Example (simplified)</h3>
-    <div class="callout-grid">
+    <div class="g2" style="margin-top:.7rem">
       <div class="mini">
-        <h3>Scenario: $10,000 staked</h3>
-        <p class="muted">Gross APR 6% → after 10% commission = 5.4% APR. Monthly compounding (gas $0.50/month) → net
-        effective rate ≈ 5.3–5.5%. On $10k that's ~$530–$550/year net.</p>
+        <h3>Example: $10,000 staked</h3>
+        <p style="font-size:.86rem; margin:0">Gross APR 6% → after 10% commission = 5.4% APR. Monthly compounding (gas $0.50/mo) → net ~5.3–5.5%. That's ~$530–$550/year.</p>
       </div>
       <div class="mini">
-        <h3>Scenario: $500 staked</h3>
-        <p class="muted">Same gross rate, same commission. Monthly compounding costs $6/year in gas.
-        Net improvement from compounding ≈ $2–3. "Set and forget" wins for small balances.</p>
+        <h3>Example: $500 staked</h3>
+        <p style="font-size:.86rem; margin:0">Same gross rate. Monthly compounding costs $6/year in gas. Net benefit from compounding ≈ $2–3. "Set and forget" wins.</p>
       </div>
-    </div>
- 
-    <div class="note" style="margin-top:.75rem;">
-      <strong>Calculator takeaway:</strong> Your break-even compounding threshold depends on balance × (APR − commission) vs gas cost.
-      At low balances, auto-compounding liquid staking tokens are usually the better choice.
     </div>
   </section>
  
-  <!-- LIQUID STAKING INTEREST -->
-  <section class="card" id="liquid-staking">
-    <h2>Liquid Staking Interest: How stETH and Similar Tokens Accrue Value</h2>
+  <!-- LIQUID STAKING -->
+  <section class="card" id="liquid">
+    <h2>Liquid Staking Interest: How stETH Accrues Value</h2>
     <p>
-      Liquid staking protocols like Lido issue a derivative token (e.g. stETH for ETH, stMATIC for POL).
-      The staking interest accrues in two ways depending on the design:
+      Liquid staking protocols like Lido issue a derivative token (stETH for ETH).
+      For architecture details see
+      <a href="https://docs.lido.fi/" target="_blank" rel="noopener nofollow" class="src">Lido protocol docs</a>
+      and on-chain data via
+      <a href="https://dune.com/lido/lido-ethereum-validator-performance" target="_blank" rel="noopener nofollow" class="src">Dune Analytics</a>.
     </p>
  
-    <div class="grid-2">
+    <div class="tags">
+      <span class="tag">Liquid Staking</span>
+      <span class="tag">stETH</span>
+      <span class="tag">Auto-Compound</span>
+    </div>
+ 
+    <div class="g2">
       <div class="mini">
-        <h3>Rebasing tokens (e.g. stETH)</h3>
-        <p class="muted">Your wallet balance increases daily to reflect accrued rewards.
-        1 stETH always targets 1 ETH in backing. Interest shows up as additional tokens.</p>
-        <div class="kpi-badges">
-          <span>Auto-compound</span>
-          <span>Balance increases</span>
-          <span>No gas for rewards</span>
-        </div>
+        <h3>Rebasing tokens (stETH)</h3>
+        <p style="font-size:.86rem; margin:0 0 .45rem">Wallet balance increases daily to reflect rewards. 1 stETH always targets 1 ETH in backing.</p>
+        <div class="kpis"><span>Auto-compound</span><span>Balance grows</span><span>No gas</span></div>
       </div>
       <div class="mini">
-        <h3>Reward-bearing tokens (e.g. wstETH)</h3>
-        <p class="muted">Token balance stays fixed; price-per-share increases over time.
-        Better for DeFi integrations. Interest accrues as appreciation in token value.</p>
-        <div class="kpi-badges">
-          <span>Price appreciates</span>
-          <span>Fixed balance</span>
-          <span>DeFi-friendly</span>
-        </div>
+        <h3>Reward-bearing (wstETH)</h3>
+        <p style="font-size:.86rem; margin:0 0 .45rem">Balance stays fixed; price-per-share increases over time. Better for DeFi integrations.</p>
+        <div class="kpis"><span>Price appreciates</span><span>Fixed balance</span><span>DeFi-friendly</span></div>
       </div>
     </div>
  
-    <div class="note" style="margin-top:.75rem;">
-      <strong>Key risk:</strong> Liquid staking tokens trade at market prices. A peg deviation (discount to underlying)
-      means you could receive less than expected on exit, regardless of staking interest earned.
+    <div class="note" style="margin-top:.75rem">
+      <strong>Key risk:</strong> Liquid staking tokens trade at market prices. A peg deviation (discount to underlying) reduces your exit value regardless of staking interest earned.
     </div>
   </section>
  
-  <!-- RISK-ADJUSTED YIELD -->
-  <section class="card" id="risk-adjusted">
-    <h2>Risk-Adjusted Staking Interest: Net Returns After Real Costs</h2>
+  <!-- RISK -->
+  <section class="card" id="risk">
+    <h2>Risk-Adjusted Staking Interest</h2>
     <p>
       Headline APY means nothing if the risks that can impair your principal aren't priced in.
-      Evaluate staking interest on a risk-adjusted basis:
+      Smart contract audits are published publicly —
+      <a href="https://github.com/lidofinance/audits" target="_blank" rel="noopener nofollow" class="src">Lido audit reports</a>
+      and <a href="https://blog.openzeppelin.com/" target="_blank" rel="noopener nofollow" class="src">OpenZeppelin research</a>
+      are good starting points.
     </p>
  
-    <table aria-label="Risk factors for staking interest">
-      <thead>
-        <tr>
-          <th>Risk factor</th>
-          <th>Impact on interest</th>
-          <th>Mitigation</th>
-        </tr>
-      </thead>
+    <div class="tags">
+      <span class="tag">Risk-Adjusted Returns</span>
+      <span class="tag">Smart Contract Risk</span>
+      <span class="tag">Slashing</span>
+    </div>
+ 
+    <table aria-label="Risk factors">
+      <thead><tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr></thead>
       <tbody>
-        <tr class="highlight">
-          <td>Smart contract bug</td>
-          <td class="err">Principal loss possible</td>
-          <td>Use audited, battle-tested protocols (Lido, major validators)</td>
-        </tr>
-        <tr>
-          <td>Validator slashing</td>
-          <td class="warn">Partial principal reduction</td>
-          <td>Choose validators with proven track records; some protocols offer slash insurance</td>
-        </tr>
-        <tr class="highlight">
-          <td>Token price decline</td>
-          <td class="err">Real yield can turn negative</td>
-          <td>Consider stablecoin-denominated staking or hedge exposure</td>
-        </tr>
-        <tr>
-          <td>Liquidity/peg risk</td>
-          <td class="warn">Reduced exit value</td>
-          <td>Hold until peg restores or accept discount</td>
-        </tr>
-        <tr class="highlight">
-          <td>Regulatory risk</td>
-          <td class="warn">Access disruption</td>
-          <td>Diversify across jurisdictions and protocols</td>
-        </tr>
-        <tr>
-          <td>Unbonding lock-up</td>
-          <td class="warn">Opportunity cost</td>
-          <td>Use liquid staking for flexibility; know unbonding periods before staking</td>
-        </tr>
+        <tr class="hl"><td>Smart contract bug</td><td class="err">Principal loss possible</td><td>Use audited, battle-tested protocols</td></tr>
+        <tr><td>Validator slashing</td><td class="warn">Partial principal reduction</td><td>Choose validators with proven track records</td></tr>
+        <tr class="hl"><td>Token price decline</td><td class="err">Real yield turns negative</td><td>Hedge or use stablecoin-denominated staking</td></tr>
+        <tr><td>Peg / liquidity risk</td><td class="warn">Reduced exit value</td><td>Hold until peg restores or accept discount</td></tr>
+        <tr class="hl"><td>Unbonding lock-up</td><td class="warn">Opportunity cost</td><td>Know unbonding periods before staking</td></tr>
       </tbody>
     </table>
  
     <div class="note">
-      <strong>Framework:</strong> Risk-adjusted rate = (Gross APR − commission − tx fees) × (1 − probability-weighted loss).
-      A 3% net APR on a highly audited protocol often beats a 12% APR on an unknown one.
+      <strong>Framework:</strong> Risk-adjusted rate = (Gross APR − commission − fees) × (1 − probability-weighted loss). A 3% net APR on a highly audited protocol often beats 12% APR on an unknown one.
     </div>
   </section>
  
@@ -829,34 +494,29 @@
   <section class="card" id="tax">
     <h2>Tax Treatment of Staking Interest (2025–2026 Overview)</h2>
     <p>
-      Tax treatment of staking interest varies significantly by jurisdiction and is evolving. This is
-      <em>not</em> tax advice — consult a qualified professional. Key considerations:
+      Tax treatment varies by jurisdiction and is actively evolving. This is not tax advice.
+      For official guidance see
+      <a href="https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies" target="_blank" rel="noopener nofollow" class="src">IRS (US)</a>
+      and
+      <a href="https://www.hmrc.gov.uk/manuals/cryptoassetsmanual/CRYPTO22250.htm" target="_blank" rel="noopener nofollow" class="src">HMRC (UK)</a>.
     </p>
  
+    <div class="tags">
+      <span class="tag">Tax Basics</span>
+      <span class="tag">Record-Keeping</span>
+      <span class="tag">Jurisdictions</span>
+    </div>
+ 
     <ul>
-      <li><strong>Income at receipt:</strong> Many jurisdictions (US, UK, Germany) treat staking rewards as ordinary income taxed at fair market value when received.</li>
-      <li><strong>Capital gains on sale:</strong> Any subsequent appreciation of staked or reward tokens is typically a capital gains event.</li>
-      <li><strong>Compounding complexity:</strong> Each auto-compound or claim event may be a separate taxable income event.</li>
-      <li><strong>Liquid staking tokens:</strong> Wrapping/unwrapping (e.g. stETH → ETH) may be a taxable disposal in some jurisdictions.</li>
+      <li><strong>Income at receipt:</strong> Most jurisdictions treat staking rewards as ordinary income at fair market value when received.</li>
+      <li><strong>Capital gains on sale:</strong> Subsequent appreciation is typically a capital gains event.</li>
+      <li><strong>Compounding complexity:</strong> Each claim event may be a separate taxable income event.</li>
+      <li><strong>Liquid staking tokens:</strong> Wrapping/unwrapping (stETH → ETH) may be a taxable disposal in some jurisdictions.</li>
       <li><strong>Loss events:</strong> Slashing losses may be deductible — verify locally.</li>
     </ul>
  
-    <div class="callout-grid">
-      <div class="mini">
-        <h3>Record-keeping minimum</h3>
-        <p class="muted">Track: date of each reward claim, amount in tokens, USD/EUR value at receipt,
-        and gas fees paid. Tools: Koinly, CoinTracker, TokenTax.</p>
-      </div>
-      <div class="mini">
-        <h3>Liquid staking note</h3>
-        <p class="muted">Rebasing tokens that increase your balance daily can create daily income events.
-        Reward-bearing tokens (wstETH) may defer recognition until sale.</p>
-      </div>
-    </div>
- 
     <div class="note">
-      <strong>Disclaimer:</strong> Tax rules for crypto staking are actively being clarified globally.
-      Always verify current guidance with a local tax professional or official revenue body guidance.
+      <strong>Minimum record-keeping:</strong> Date of each reward claim, amount in tokens, USD/EUR value at receipt, gas fees paid. Tools: Koinly, CoinTracker, TokenTax.
     </div>
   </section>
  
@@ -866,30 +526,28 @@
     <ul>
       <li><strong>Use liquid staking for small balances</strong> — auto-compounding eliminates per-claim gas drag.</li>
       <li><strong>Pick validators by reliability, not headline rate</strong> — commission stability and uptime matter more than +0.5% APR.</li>
-      <li><strong>Benchmark against your alternatives</strong> — compare risk-adjusted net yield, not gross APY.</li>
       <li><strong>Keep a gas buffer</strong> — always hold enough native token to claim, unstake, or exit.</li>
       <li><strong>Know your unbonding period before you stake</strong> — illiquidity at the wrong time is a hidden cost.</li>
-      <li><strong>Review allowances periodically</strong> — revoke stale smart contract permissions with revoke.cash.</li>
-      <li><strong>Track realised outcomes quarterly</strong> — theory vs reality diverges; adjust if net yield is disappointing.</li>
-      <li><strong>Use a hardware wallet</strong> for meaningful positions; never stake from a hot wallet holding other assets.</li>
+      <li><strong>Review allowances periodically</strong> — revoke stale permissions at <a href="https://revoke.cash/" target="_blank" rel="noopener nofollow" class="src">revoke.cash</a>.</li>
+      <li><strong>Track realised outcomes quarterly</strong> — adjust if net yield diverges from expectations.</li>
+      <li><strong>Use a hardware wallet</strong> for meaningful positions.</li>
     </ul>
  
     <div class="note">
-      <strong>Most common mistake:</strong> Optimising for +1% higher APY while ignoring 10× larger risks —
-      smart contract exposure, validator opacity, or bad wallet hygiene.
+      <strong>Most common mistake:</strong> Optimising for +1% higher APY while ignoring 10× larger risks — smart contract exposure, validator opacity, or poor wallet hygiene.
     </div>
   </section>
  
   <!-- TROUBLESHOOTING -->
   <section class="card" id="troubleshooting">
-    <h2>Staking Interest Troubleshooting: Common Issues &amp; Fixes</h2>
+    <h2>Troubleshooting: Common Issues &amp; Fixes</h2>
  
-    <h3>"My staking interest seems lower than advertised"</h3>
+    <h3>"My staking interest is lower than advertised"</h3>
     <ul>
-      <li>The advertised rate was APY; you're earning APR (no compounding or fewer compounds than assumed).</li>
-      <li>Validator commission is higher than expected — recheck the validator's current commission rate.</li>
+      <li>The advertised rate was APY; you're earning APR (fewer compounds than assumed).</li>
+      <li>Validator commission is higher than expected — recheck the current rate.</li>
       <li>Network total staked increased, diluting per-token rewards.</li>
-      <li>Token price fell — your <em>USD</em> return is lower even if token-denominated APR is unchanged.</li>
+      <li>Token price declined — USD return is lower even if token APR is unchanged.</li>
     </ul>
  
     <h3>"Rewards are not appearing in my wallet"</h3>
@@ -899,146 +557,133 @@
       <li>Validator has temporary downtime — verify on the protocol's validator dashboard.</li>
     </ul>
  
-    <h3>"I can't exit / unstake"</h3>
+    <h3>"I can't unstake / withdraw"</h3>
     <ul>
-      <li>Unbonding period is active — wait for completion.</li>
-      <li>A claim/finalise step is required before withdrawal — check protocol documentation.</li>
+      <li>Unbonding period is still active — wait for completion.</li>
+      <li>A claim/finalise step is required before withdrawal.</li>
       <li>Insufficient gas for the exit transaction — top up your native token balance.</li>
     </ul>
  
     <div class="note">
-      <strong>Best debugging method:</strong> Always check the protocol's official dashboard and on-chain explorer first.
-      UI displays can lag; on-chain data is the source of truth.
+      <strong>Best debugging method:</strong> Always check on-chain data first — UI displays can lag.
+      Use <a href="https://beaconcha.in/" target="_blank" rel="noopener nofollow" class="src">Beaconcha.in</a> for Ethereum validator state.
     </div>
   </section>
  
-  <!-- EEAT / AUTHORITATIVE SOURCES -->
+  <!-- EEAT -->
   <section class="eeat" id="eeat" aria-labelledby="eeat-title">
-    <h2 id="eeat-title">Staking Interest: Authoritative Sources &amp; External References</h2>
-    <p>
-      The following sources are used as primary references for data, definitions, and security guidance on this page.
-      All links go to official documentation, academic resources, or well-established industry standards.
-    </p>
+    <h2 id="eeat-title">Authoritative References</h2>
+    <p style="font-size:.88rem;">Primary sources used throughout this guide, organised by category.</p>
  
-    <h3>Lido &amp; Liquid Staking</h3>
-    <ul>
-      <li><a href="https://lido.fi/" target="_blank" rel="noopener nofollow">Lido Finance — Official Site</a></li>
-      <li><a href="https://docs.lido.fi/" target="_blank" rel="noopener nofollow">Lido Developer Documentation — Protocol Architecture &amp; stETH Mechanics</a></li>
-      <li><a href="https://research.lido.fi/" target="_blank" rel="noopener nofollow">Lido Research Forum — On-chain Governance &amp; Economics</a></li>
-      <li><a href="https://blog.lido.fi/" target="_blank" rel="noopener nofollow">Lido Blog — Protocol Updates &amp; Staking Rate Announcements</a></li>
-    </ul>
+    <div class="g2">
+      <div>
+        <h3>Protocol &amp; Data</h3>
+        <ul style="font-size:.88rem; padding-left:1.1rem">
+          <li><a href="https://lido.fi/" target="_blank" rel="noopener nofollow">Lido Finance — Official Site</a></li>
+          <li><a href="https://docs.lido.fi/" target="_blank" rel="noopener nofollow">Lido Developer Docs</a></li>
+          <li><a href="https://www.stakingrewards.com/" target="_blank" rel="noopener nofollow">StakingRewards.com — Rate Benchmarks</a></li>
+          <li><a href="https://beaconcha.in/" target="_blank" rel="noopener nofollow">Beaconcha.in — Validator Statistics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security &amp; Tax</h3>
+        <ul style="font-size:.88rem; padding-left:1.1rem">
+          <li><a href="https://github.com/lidofinance/audits" target="_blank" rel="noopener nofollow">Lido — Smart Contract Audits</a></li>
+          <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — Allowance Tool</a></li>
+          <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies" target="_blank" rel="noopener nofollow">IRS — Virtual Currency Guidance</a></li>
+          <li><a href="https://www.hmrc.gov.uk/manuals/cryptoassetsmanual/CRYPTO22250.htm" target="_blank" rel="noopener nofollow">HMRC — Cryptoassets Manual</a></li>
+        </ul>
+      </div>
+    </div>
  
-    <h3>Staking Rate Data &amp; Analytics</h3>
-    <ul>
-      <li><a href="https://www.stakingrewards.com/" target="_blank" rel="noopener nofollow">StakingRewards.com — Cross-Protocol APR/APY Benchmarks</a></li>
-      <li><a href="https://beaconcha.in/" target="_blank" rel="noopener nofollow">Beaconcha.in — Ethereum Beacon Chain Validator Statistics</a></li>
-      <li><a href="https://dune.com/lido/lido-ethereum-validator-performance" target="_blank" rel="noopener nofollow">Dune Analytics — Lido Validator Performance Dashboard</a></li>
-      <li><a href="https://ethereum.org/en/staking/" target="_blank" rel="noopener nofollow">Ethereum.org — Official Staking Guide &amp; Rate Explained</a></li>
-    </ul>
- 
-    <h3>Security &amp; Smart Contract Audits</h3>
-    <ul>
-      <li><a href="https://github.com/lidofinance/audits" target="_blank" rel="noopener nofollow">Lido — Published Smart Contract Audits (GitHub)</a></li>
-      <li><a href="https://blog.openzeppelin.com/" target="_blank" rel="noopener nofollow">OpenZeppelin Blog — Smart Contract Security Research</a></li>
-      <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — Token Allowance Management Tool</a></li>
-      <li><a href="https://ethereum.org/guides/how-to-revoke-token-access/" target="_blank" rel="noopener nofollow">Ethereum.org — How to Revoke Token Approvals</a></li>
-    </ul>
- 
-    <h3>Tax &amp; Regulatory Reference</h3>
-    <ul>
-      <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies" target="_blank" rel="noopener nofollow">IRS — Virtual Currency Guidance (US)</a></li>
-      <li><a href="https://www.hmrc.gov.uk/manuals/cryptoassetsmanual/CRYPTO22250.htm" target="_blank" rel="noopener nofollow">HMRC — Cryptoassets Manual: Staking (UK)</a></li>
-      <li><a href="https://koinly.io/guides/crypto-staking-taxes/" target="_blank" rel="noopener nofollow">Koinly — Staking Tax Guide (Multi-Jurisdiction)</a></li>
-    </ul>
- 
-    <div class="note">
+    <div class="note" style="margin-top:1rem">
       <strong>About:</strong> Prepared by Crypto Finance Experts as a practical SEO-oriented knowledge base for
       <em>Staking Interest</em>: mechanics, APY/APR, compounding, benchmarks, risk, tax, and troubleshooting.
     </div>
   </section>
  
   <!-- FAQ -->
-  <section class="card faq-section" aria-labelledby="faq">
-    <h2 id="faq">Staking Interest: Frequently Asked Questions</h2>
+  <section class="card" id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently Asked Questions</h2>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
-        <h3>What is staking interest and how is it different from bank interest?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f1" id="b1">
+        <h3>What is staking interest and how is it different from bank interest?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
-        <p><strong>Staking interest</strong> is compensation earned for locking tokens to support a proof-of-stake network's security and operations. Unlike bank interest (a contractual, insured rate in a regulated institution), staking interest is protocol-issued, variable, denominated in the staked token, and carries smart contract, validator, and market risks with no deposit insurance.</p>
+      <div id="f1" class="faq-body" role="region" aria-labelledby="b1">
+        <p>Staking interest is compensation earned for locking tokens to support a proof-of-stake network. Unlike bank interest (contractual, insured, regulated), it is protocol-issued, variable, token-denominated, and carries smart contract, validator, and market risks with no deposit insurance.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
-        <h3>What is a typical staking interest rate in 2026?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f2" id="b2">
+        <h3>What is a typical staking interest rate in 2026?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
-        <p>Rates vary widely: Ethereum (via Lido) typically runs 3–4% APR; Solana 6–7%; Cosmos (ATOM) 10–14%; Polkadot 12–15%. All rates are nominal and denominated in the staked token — your USD return depends heavily on token price performance.</p>
+      <div id="f2" class="faq-body" role="region" aria-labelledby="b2">
+        <p>Rates vary widely: Ethereum via Lido ~3–4% APR; Solana ~6–7%; Cosmos (ATOM) ~10–14%; Polkadot ~12–15%. All rates are nominal in token terms — your USD return depends on token price performance.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
-        <h3>Is staking interest taxable income?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f3" id="b3">
+        <h3>Is staking interest taxable income?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
-        <p>In most major jurisdictions (US, UK, Australia, Germany), staking rewards are treated as ordinary income at fair market value when received. Each claim event is typically a taxable event. Subsequent appreciation when you sell the rewards is a capital gain. Always consult a local tax professional.</p>
+      <div id="f3" class="faq-body" role="region" aria-labelledby="b3">
+        <p>In most major jurisdictions (US, UK, Australia, Germany) staking rewards are treated as ordinary income at fair market value when received. Subsequent appreciation is a capital gain. Always consult a local tax professional.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
-        <h3>How does Lido staking interest work?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f4" id="b4">
+        <h3>How does Lido staking interest work?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
-        <p>Lido pools ETH (and other assets) across a diversified set of professional validators. Rewards accrue daily and are reflected in your stETH balance via rebasing — your balance increases each day proportionally to the network's staking rate minus Lido's 10% fee (split between validators and the DAO treasury). No manual claiming is required.</p>
+      <div id="f4" class="faq-body" role="region" aria-labelledby="b4">
+        <p>Lido pools ETH across a diversified set of professional validators. Rewards accrue daily and are reflected in your stETH balance via rebasing — your balance increases daily proportionally to the network staking rate minus Lido's 10% fee. No manual claiming required.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
-        <h3>What is the difference between staking APY and real yield?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f5" id="b5">
+        <h3>What is the difference between staking APY and real yield?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
-        <p>APY assumes compounding and ignores costs. Real yield is what you actually receive: after commission, transaction fees, compounding costs, and inflation adjustment. A 12% APY can be a 6% net APR in practice, and if the token depreciates 20% it becomes a negative real return.</p>
+      <div id="f5" class="faq-body" role="region" aria-labelledby="b5">
+        <p>APY assumes compounding and ignores costs. Real yield is what you actually receive after commission, fees, and inflation adjustment. A 12% APY can be 6% net APR in practice — and if the token depreciates 20%, your real return is negative.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
-        <h3>Does staking interest compound automatically?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f6" id="b6">
+        <h3>Does staking interest compound automatically?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
-        <p>It depends on the protocol and method. Native staking typically requires manual claims and restaking, incurring gas each time. Liquid staking tokens like stETH compound automatically via rebasing — your balance grows daily with no action required, making them efficient for smaller balances.</p>
+      <div id="f6" class="faq-body" role="region" aria-labelledby="b6">
+        <p>It depends on the method. Native staking requires manual claims and restaking, each costing gas. Liquid staking tokens like stETH compound automatically via rebasing — balance grows daily with no action required.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
-        <h3>Is staking interest safe? What are the main risks?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f7" id="b7">
+        <h3>Is staking interest safe?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
-        <p>The main risks are: smart contract vulnerabilities (especially in liquid staking), validator slashing (partial principal loss), token price depreciation reducing real returns, peg/liquidity risk for derivative tokens, and regulatory uncertainty. Using well-audited, established protocols significantly reduces but does not eliminate risk.</p>
+      <div id="f7" class="faq-body" role="region" aria-labelledby="b7">
+        <p>Main risks: smart contract vulnerabilities, validator slashing, token price depreciation, peg/liquidity risk for derivative tokens, and regulatory uncertainty. Using well-audited, established protocols significantly reduces but does not eliminate risk.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
-        <h3>How often should I compound my staking interest?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f8" id="b8">
+        <h3>What is the minimum to start earning staking interest?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
-        <p>Your optimal compounding frequency is where the APY gain exceeds the gas cost. For balances under ~$5,000, monthly or never (using liquid staking instead) is often the best net outcome. For larger positions, weekly or daily may be worth it on low-fee networks.</p>
+      <div id="f8" class="faq-body" role="region" aria-labelledby="b8">
+        <p>Lido accepts any ETH amount (no 32 ETH requirement). Your practical minimum is the balance where transaction fees don't consume your interest income — roughly $500–$1,000 for native staking to be fee-efficient.</p>
       </div>
     </div>
  
     <div class="faq-item">
-      <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
-        <h3>What is the minimum amount to start earning staking interest?</h3><span class="faq-plus">+</span>
+      <button class="faq-btn" aria-expanded="false" aria-controls="f9" id="b9">
+        <h3>How often should I compound my staking interest?</h3><span class="faq-ico">+</span>
       </button>
-      <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
-        <p>There is no hard universal minimum. Lido accepts any ETH amount (no 32 ETH minimum like solo staking). However, your practical minimum is the amount where transaction fees don't consume your interest income. For most protocols, $500–$1,000 is a reasonable floor for native staking to be fee-efficient.</p>
+      <div id="f9" class="faq-body" role="region" aria-labelledby="b9">
+        <p>Your optimal frequency is where the APY gain exceeds the gas cost. For balances under ~$5,000, monthly or never (using liquid staking) is usually the best net outcome. For larger positions on low-fee networks, weekly may be worth it.</p>
       </div>
     </div>
  
@@ -1046,24 +691,19 @@
  
 </main>
  
-<footer class="container" role="contentinfo" style="padding:2rem 0; border-top:1px solid var(--line); margin-top:2rem">
-  <p class="muted">© 2026 Staking Interest Guide. Educational content — not financial or tax advice. Always verify current rates and consult qualified professionals.</p>
+<footer class="wrap" role="contentinfo">
+  <p>© 2026 Staking Interest Guide. Educational content — not financial or tax advice. Always verify current rates and consult qualified professionals.</p>
 </footer>
  
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-button').forEach(btn => {
+  document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const content  = document.getElementById(btn.getAttribute('aria-controls'));
-      btn.setAttribute('aria-expanded', String(!expanded));
-      if (!expanded) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.classList.add('open');
-      } else {
-        content.style.maxHeight = '0';
-        content.classList.remove('open');
-      }
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      const body = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.querySelector('.faq-ico').textContent = open ? '+' : '−';
+      body.style.maxHeight = open ? '0' : body.scrollHeight + 'px';
+      body.classList.toggle('open', !open);
     });
   });
 </script>
